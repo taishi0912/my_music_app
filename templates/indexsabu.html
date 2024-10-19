@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Daily Beat - 毎日の音楽共有{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h2>毎日の1曲から、音楽の世界が広がる</h2>
+        <p>Daily Beatで、あなたの音楽体験を共有しよう</p>
+        <a href="{{ url_for('register') }}" class="btn btn-large">今すぐ始める</a>
+    </div>
+    <div class="hero-image">
+        <img src="{{ url_for('static', filename='images/music-sharing.jpg') }}" alt="音楽共有">
+    </div>
+</section>
+
+<section class="features">
+    <div class="feature">
+        <i class="fas fa-music"></i>
+        <h3>毎日の1曲を共有</h3>
+        <p>その日最初に聴いた曲を自動で投稿</p>
+    </div>
+    <div class="feature">
+        <i class="fas fa-users"></i>
+        <h3>友達の音楽を発見</h3>
+        <p>フォローしている人の投稿をチェック</p>
+    </div>
+    <div class="feature">
+        <i class="fas fa-chart-line"></i>
+        <h3>月間ランキング</h3>
+        <p>人気のアーティストやトラックをチェック</p>
+    </div>
+</section>
+{% endblock %}

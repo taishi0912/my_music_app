@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}全ての投稿 - Daily Beat{% endblock %}
+{% block content %}
+<div class="posts-container" role="main">
+    <div class="all-posts">
+        <h2>全ての投稿</h2>
+        <div class="sort-options">
+            <a href="{{ url_for('all_posts', sort='desc') }}" {% if current_sort == 'desc' %}class="active"{% endif %}>最新順</a> |
+            <a href="{{ url_for('all_posts', sort='asc') }}" {% if current_sort == 'asc' %}class="active"{% endif %}>古い順</a>
+        </div>
+        {% for post in posts %}
+            <div class="post">
+                <img src="{{ url_for('static', filename='images/placeholder.png') }}" class="album-art" alt="Album Art" data-artist="{{ post.artist }}" data-title="{{ post.title }}">
+                <div class="post-info">
+                    <h3>{{ post.title }}</h3>
+                    <p>アーティスト: {{ post.artist }}</p>
+                    <p>ジャンル: {{ post.genre }}</p>
+                    <p>投稿者: {{ post.user.username }}</p>
+                    <p>投稿日: {{ post.date_posted.strftime('%Y-%m-%d') }}</p>
+                    <a href="{{ post.music_url }}" target="_blank" rel="noopener noreferrer">曲を聴く</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if current_user.is_authenticated %}
+    <div class="followed-posts">
+        <h2>フォロー中のユーザーの投稿</h2>
+        {% for post in followed_posts %}
+            <div class="post">
+                <img src="{{ url_for('static', filename='images/placeholder.png') }}" class="album-art" alt="Album Art" data-artist="{{ post.artist }}" data-title="{{ post.title }}">
+                <div class="post-info">
+                    <h3>{{ post.title }}</h3>
+                    <p>アーティスト: {{ post.artist }}</p>
+                    <p>ジャンル: {{ post.genre }}</p>
+                    <p>投稿者: {{ post.user.username }}</p>
+                    <p>投稿日: {{ post.date_posted.strftime('%Y-%m-%d') }}</p>
+                    <a href="{{ post.music_url }}" target="_blank" rel="noopener noreferrer">曲を聴く</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

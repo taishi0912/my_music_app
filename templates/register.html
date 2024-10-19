@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}新規登録 - Daily Beat{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main class="form-container">
+    <form class="register-form" method="POST">
+        <h2>新規登録</h2>
+        <div class="form-group">
+            <label for="username">ユーザー名 <span class="required">*</span></label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="password">パスワード <span class="required">*</span></label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirm-password">パスワード（確認） <span class="required">*</span></label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+        </div>
+        <div class="form-group">
+            <label for="favorite-genre">好きな音楽ジャンル <span class="required">*</span></label>
+            <select id="favorite-genre" name="favorite-genre" required>
+                <option value="">選択してください</option>
+                <option value="pop">J-POP</option>
+                <option value="rock">K-POP</option>
+                <option value="jazz">ヒップホップ/ラップ</option>
+                <option value="classical">ジャズ</option>
+                <option value="hiphop">クラシック</option>
+                <option value="electronic">ロック</option>
+                <option value="other">その他</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">登録</button>
+    </form>
+    <p>すでにアカウントをお持ちの方は<a href="{{ url_for('login') }}">こちら</a></p>
+</main>
+{% endblock %}

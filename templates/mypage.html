@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}マイページ - Daily Beat{% endblock %}
+
+{% block content %}
+<main class="mypage-container">
+    <section class="user-info">
+        <img src="{{ url_for('static', filename='images/default-avatar.png') }}" alt="ユーザーアイコン" class="user-avatar">
+        <h2>{{ user.username }}さんのページ</h2>
+        <p>好きなジャンル: {{ user.favorite_genre }}</p>
+    </section>
+
+    <section class="daily-song">
+        <h3>今日の1曲</h3>
+        {% if daily_song %}
+            <div class="song-info">
+                <h4>{{ daily_song.title }}</h4>
+                <p>アーティスト: {{ daily_song.artist }}</p>
+                <p>ジャンル: {{ daily_song.genre }}</p>
+                <a href="{{ daily_song.music_url }}" target="_blank" rel="noopener noreferrer">音楽を聴く</a>
+            </div>
+        {% else %}
+            <p>今日の1曲はまだ投稿されていません。<a href="{{ url_for('post_daily_song') }}">投稿する</a></p>
+        {% endif %}
+    </section>
+
+    <section class="past-posts">
+        <h3>過去の投稿</h3>
+        {% if past_posts %}
+            <ul class="post-list">
+                {% for post in past_posts %}
+                    <li class="post-item">
+                        <div class="post-date">{{ post.date_posted.strftime('%Y-%m-%d') }}</div>
+                        <div class="post-content">
+                            <h4>{{ post.title }}</h4>
+                            <p>アーティスト: {{ post.artist }}</p>
+                            <p>ジャンル: {{ post.genre }}</p>
+                            <a href="{{ post.music_url }}" target="_blank" rel="noopener noreferrer">音楽を聴く</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>過去の投稿はありません。</p>
+        {% endif %}
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Daily Beat - 音楽で思いを伝えるSNS{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+<div class="section hero">
+    <div class="hero-content">
+        <h2>言葉にできない思いを、音楽で伝えよう</h2>
+        <p>Daily Beatは、あなたの今の感情を音楽で表現し、周りの友達と共有するSNSです。<br>
+        言葉では伝えきれない気持ちを、あなたの選んだ1曲に乗せて届けましょう。</p>
+        <a href="{{ url_for('register') }}" class="btn btn-large">今すぐ始める</a>
+    </div>
+    <div class="hero-image">
+        <img src="{{ url_for('static', filename='images/music-sharing.jpg') }}" alt="音楽共有">
+    </div>
+</div>
+
+<div class="section features">
+    <div class="feature">
+        <h3>今日の気分を1曲で表現</h3>
+        <p>その日の感情や出来事を象徴する1曲を選んで投稿</p>
+    </div>
+    <div class="feature">
+        <h3>音楽で気持ちを共有</h3>
+        <p>友達の選んだ曲から、今の気持ちを感じ取ろう</p>
+    </div>
+    <div class="feature">
+        <h3>音楽でつながる新しい絆</h3>
+        <p>共感できる曲を通じて、新しい出会いを見つけよう</p>
+    </div>
+</div>
+
+{% endblock %}

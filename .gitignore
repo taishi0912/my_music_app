@@ -3,10 +3,12 @@
 
 # But don't ignore these files and directories
 !app.py
-!static/
-!templates/
 !.gitignore
-!static/css/style.css
+!static/
+!static/**
+!templates/
+!templates/**
+
 # Ignore certain files and directories even if they're in static or templates
 **/__pycache__
 **/.DS_Store

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}メッセージ - Daily Beat{% endblock %}
+{% block content %}
+<div class="messages-container" role="main">
+    <h2>メッセージ</h2>
+    {% for message in messages %}
+        <div class="message">
+            <p>From: {{ message.sender.username }}</p>
+            <p>{{ message.body }}</p>
+            <p>送信日時: {{ message.timestamp.strftime('%Y-%m-%d %H:%M') }}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

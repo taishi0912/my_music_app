@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}今日の1曲を投稿 - Daily Beat{% endblock %}
+
+{% block content %}
+<main class="form-container">
+    <h2>今日の1曲を投稿</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.title.label }}
+            {{ form.title(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.artist.label }}
+            {{ form.artist(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.genre.label }}
+            {{ form.genre(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.music_url.label }}
+            {{ form.music_url(class="form-control") }}
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+</main>
+{% endblock %}
